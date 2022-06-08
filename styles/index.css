@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(to bottom, #181d23 0%, #202736 80%);
+
+}
+
+.container {
+    background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.navbar {
+    font-size: 19px;
+    line-height: 1.42857143;
+    color: #333;
+    position: fixed;
+    right: 15px;
+    top: 12px;
+    z-index: 800;
+}
+
+.navbar > a {
+    color: #fff;
+    padding: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    float: left;
+}
+
+.navbar > a::after {
+    display: block;
+    margin-top: 5px;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    content: '';
+    opacity: 0;
+    transition: width 0.6s, opacity 0.8s;
+}
+
+.navbar > a:hover::after {
+    opacity: 1;
+    width: 100%;
+}
