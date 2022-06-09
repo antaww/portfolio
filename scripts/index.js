@@ -20,27 +20,42 @@ window.onload = function () {
 }
 
 let myFullpage = new fullpage('#fullpage', {
-    autoScrolling: true, keyboardScrolling: true,
+    autoScrolling: true,
+    keyboardScrolling: true,
+    navigation: true,
+    navigationPosition: 'right',
+    navigationTooltips: ['Home', 'About', 'Skills', 'Projects', 'Contact'],
+    navigationTooltipsFontFamily: 'Poppins',
     onLeave: function (origin, destination, direction) {
-        let sectionIndex = origin.index;
-        let section = document.querySelector(`.section:nth-child(${sectionIndex + 1})`);
-        let sectionBackground = section.style.background;
-        console.log(sectionIndex + 1, sectionBackground);
+        let currentSectionIndex = origin.index;
+        let currentSection = document.querySelector(`.section:nth-child(${currentSectionIndex + 1})`);
+        let currentSectionBackground = currentSection.style.background;
         let rgb;
-        if (direction === 'up') {
-            rgb = sectionBackground.split('rgb(')[1].split(')')[0].split(',');
-        } else if (direction === 'down') {
-            rgb = sectionBackground.split(' rgb(')[1].split(')')[0].split(',');
+        if (direction === 'up') { //copy the top color of current currentSection
+            rgb = currentSectionBackground.split('rgb(')[1].split(')')[0].split(',');
+        } else if (direction === 'down') { //copy the bottom color of current currentSection
+            rgb = currentSectionBackground.split(' rgb(')[1].split(')')[0].split(',');
         }
         rgb = rgb.map(function (item) {
             return item.trim();
         });
-        let rgbCopiedColor = 'rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')';
+        let rgbCopiedColor = 'rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')'; //cast rgb array to string in right format
         let nextSection = destination.item;
         let color;
-        if (direction === 'down') {
+        if (destination.index > origin.index + 1) { //if scroll down more than one currentSection
+            for (let i = origin.index + 1; i < destination.index; i++) {
+                let section = document.querySelector(`.section:nth-child(${i + 1})`);
+                section.style.background = rgbCopiedColor;
+            }
+        } else if (destination.index < origin.index - 1) { //if scroll up more than one currentSection
+            for (let i = origin.index - 1; i > destination.index; i--) {
+                let section = document.querySelector(`.section:nth-child(${i + 1})`);
+                section.style.background = rgbCopiedColor;
+            }
+        }
+        if (direction === 'down') { //apply copied color to the top of the next currentSection
             color = 'linear-gradient(to ' + 'bottom' + ', ' + rgbCopiedColor + ', ' + randomColor()[0] + ')';
-        } else if (direction === 'up') {
+        } else if (direction === 'up') { //apply copied color to the bottom of the next currentSection
             color = 'linear-gradient(to ' + 'bottom' + ', ' + randomColor()[0] + ', ' + rgbCopiedColor + ')';
         }
         nextSection.style.background = color;

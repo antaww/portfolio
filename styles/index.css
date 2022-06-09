@@ -7,7 +7,6 @@ body {
 }
 
 .container {
-    /*background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true);*/
     background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -47,4 +46,8 @@ body {
 .navbar > a:hover::after {
     opacity: 1;
     width: 100%;
+}
+
+#fp-nav ul li .fp-tooltip {
+    font-family: 'Poppins', sans-serif !important;
 }
