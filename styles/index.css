@@ -51,3 +51,25 @@ body {
 #fp-nav ul li .fp-tooltip {
     font-family: 'Poppins', sans-serif !important;
 }
+
+.arrow-down {
+    position: fixed;
+    bottom: 9%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    z-index: 999;
+}
+
+.arrow-down > i {
+    font-size: 200%;
+    font-style: italic;
+    transition: all 0.3s;
+}
+
+.arrow-down > i:hover {
+    transform: matrix3d(1, 0, 0, 0, 0.5, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    cursor: pointer;
+}

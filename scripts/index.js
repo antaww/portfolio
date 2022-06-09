@@ -24,7 +24,7 @@ let myFullpage = new fullpage('#fullpage', {
     keyboardScrolling: true,
     navigation: true,
     navigationPosition: 'right',
-    navigationTooltips: ['Home', 'About', 'Skills', 'Projects', 'Contact'],
+    navigationTooltips: ['Home', 'About', 'Projects', 'Contact'],
     navigationTooltipsFontFamily: 'Poppins',
     onLeave: function (origin, destination, direction) {
         let currentSectionIndex = origin.index;
@@ -36,7 +36,7 @@ let myFullpage = new fullpage('#fullpage', {
         } else if (direction === 'down') { //copy the bottom color of current currentSection
             rgb = currentSectionBackground.split(' rgb(')[1].split(')')[0].split(',');
         }
-        rgb = rgb.map(function (item) {
+        rgb = rgb.map(function (item) { //remove spaces
             return item.trim();
         });
         let rgbCopiedColor = 'rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')'; //cast rgb array to string in right format
@@ -66,3 +66,25 @@ document.querySelector('.navbar').addEventListener('click', function (e) {
     myFullpage.moveTo(e.target.dataset.sectionId);
 });
 
+document.querySelector('.arrow-down').addEventListener('click', function () {
+    myFullpage.moveSectionDown();
+});
+
+document.querySelector('.navbar').addEventListener('mouseover', function (e) {
+    //get random number, 1 or 2
+    let random = Math.floor(Math.random() * 2) + 1;
+    console.log(random);
+    if (e.target.tagName === 'A') {
+        if (random === 1) {
+            e.target.style.transform = 'skewY(3deg)';
+        } else if (random === 2) {
+            e.target.style.transform = 'skewY(-3deg)';
+        }
+    }
+});
+
+document.querySelector('.navbar').addEventListener('mouseout', function (e) {
+    if (e.target.tagName === 'A') {
+        e.target.style.transform = 'skewY(0deg)';
+    }
+});
