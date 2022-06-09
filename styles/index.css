@@ -3,12 +3,11 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background: linear-gradient(to bottom, #181d23 0%, #202736 80%);
-
+    /*background: rgba(0, 0, 0, 0) linear-gradient(to right, rgb(191, 250, 251), rgb(253, 220, 252)) repeat scroll 0% 0%;*/
 }
 
 .container {
-    background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true);
+    /*background: url(https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true);*/
     background-size: cover;
     width: 100vw;
     height: 100vh;
