@@ -1,12 +1,12 @@
+let arrowDown = document.querySelector('.arrow-down');
+
 function randomColor() {
     let colorsPalette = ['#F7F6CF', '#F4CFDF',
         '#9AC8EB', '#E7CBA9',
         '#EEBAB2', '#E5DB9C', '#b29bc2',
         '#39b2a7', '#98D4BB', '#D5E4C3'];
-
-
-    let color1;
-    let color2;
+    let color1 = '';
+    let color2 = '';
     while (color1 === color2) {
         color1 = colorsPalette[Math.floor(Math.random() * colorsPalette.length)];
         color2 = colorsPalette[Math.floor(Math.random() * colorsPalette.length)];
@@ -28,7 +28,23 @@ let myFullpage = new fullpage('#fullpage', {
     navigationPosition: 'right',
     navigationTooltips: ['Home', 'About', 'Projects', 'Contact'],
     navigationTooltipsFontFamily: 'Poppins',
+    loopBottom: false,
+    loopTop: false,
+    dragAndMove: true,
     onLeave: function (origin, destination, direction) {
+        if (destination.index === 3) {
+            arrowDown.classList.add('fadeOutUp');
+            setTimeout(function () {
+                arrowDown.classList.add('hide');
+                arrowDown.classList.remove('fadeOutUp');
+            }, 500);
+        } else if (arrowDown.classList.contains('hide')) {
+            arrowDown.classList.remove('hide');
+            arrowDown.classList.add('fadeInDown');
+            setTimeout(function () {
+                arrowDown.classList.remove('fadeInDown');
+            }, 500);
+        }
         let currentSectionIndex = origin.index;
         let currentSection = document.querySelector(`.section:nth-child(${currentSectionIndex + 1})`);
         let currentSectionBackground = currentSection.style.background;
@@ -72,24 +88,47 @@ document.querySelector('.navbar').addEventListener('click', function (e) {
     myFullpage.moveTo(e.target.dataset.sectionId);
 });
 
-document.querySelector('.arrow-down').addEventListener('click', function () {
+arrowDown.addEventListener('click', function () {
     myFullpage.moveSectionDown();
 });
 
-document.querySelector('.navbar').addEventListener('mouseover', function (e) {
-    let random = Math.floor(Math.random() * 2) + 1;
-    console.log(random);
-    if (e.target.tagName === 'A') {
-        if (random === 1) {
-            e.target.style.transform = 'skewY(3deg)';
-        } else if (random === 2) {
-            e.target.style.transform = 'skewY(-3deg)';
+const random = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+let crossBarGlitchTexts = document.querySelectorAll(".cross-bar-glitch");
+crossBarGlitchTexts.forEach(text => {
+    let content = text.textContent;
+    text.textContent = "";
+    // Glitch Text
+    let slice = text.dataset.slice;
+    let glitchText = document.createElement("div");
+    glitchText.className = "glitch";
+    glitchText.style.setProperty("--slice-count", slice);
+    for (let i = 0; i <= Number(slice); i++) {
+        let span = document.createElement("span");
+        span.textContent = content;
+        span.style.setProperty("--i", `${i + 1}`);
+        if (i !== Number(slice)) {
+            span.style.animationDelay = `${600 + random(100, 300)}ms`;
         }
+        glitchText.append(span);
     }
+    text.appendChild(glitchText);
 });
 
-document.querySelector('.navbar').addEventListener('mouseout', function (e) {
-    if (e.target.tagName === 'A') {
-        e.target.style.transform = 'skewY(0deg)';
-    }
+
+const startAnimation = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            setTimeout(function () {
+                entry.target.style.visibility = "visible";
+                entry.target.classList.add("fadeInUp");
+            }, 200);
+        }
+    });
+};
+const observer = new IntersectionObserver(startAnimation);
+const options = {root: null, rootMargin: '0px', threshold: 1};
+
+const elements = document.querySelectorAll('.section-container');
+elements.forEach(el => {
+    observer.observe(el, options);
 });
