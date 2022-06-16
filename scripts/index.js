@@ -1,13 +1,15 @@
 function randomColor() {
-    let letters = '0123456789ABCDEF';
-    let color1 = '#';
-    let color2 = '#';
-    for (let i = 0; i < 6; i++) {
-        color1 += letters[Math.floor(Math.random() * 16)];
-        color2 += letters[Math.floor(Math.random() * 16)];
-    }
-    if (color1 === color2) {
-        return randomColor();
+    let colorsPalette = ['#F7F6CF', '#F4CFDF',
+        '#9AC8EB', '#E7CBA9',
+        '#EEBAB2', '#E5DB9C', '#b29bc2',
+        '#39b2a7', '#98D4BB', '#D5E4C3'];
+
+
+    let color1;
+    let color2;
+    while (color1 === color2) {
+        color1 = colorsPalette[Math.floor(Math.random() * colorsPalette.length)];
+        color2 = colorsPalette[Math.floor(Math.random() * colorsPalette.length)];
     }
     return [color1, color2];
 }
@@ -53,10 +55,14 @@ let myFullpage = new fullpage('#fullpage', {
                 section.style.background = rgbCopiedColor;
             }
         }
+        let colorPicked = randomColor()[0];
+        while (colorPicked === rgbCopiedColor) {
+            colorPicked = randomColor()[0];
+        }
         if (direction === 'down') { //apply copied color to the top of the next currentSection
-            color = 'linear-gradient(to ' + 'bottom' + ', ' + rgbCopiedColor + ', ' + randomColor()[0] + ')';
+            color = 'linear-gradient(to ' + 'bottom' + ', ' + rgbCopiedColor + ', ' + colorPicked + ')';
         } else if (direction === 'up') { //apply copied color to the bottom of the next currentSection
-            color = 'linear-gradient(to ' + 'bottom' + ', ' + randomColor()[0] + ', ' + rgbCopiedColor + ')';
+            color = 'linear-gradient(to ' + 'bottom' + ', ' + colorPicked + ', ' + rgbCopiedColor + ')';
         }
         nextSection.style.background = color;
     },
@@ -71,7 +77,6 @@ document.querySelector('.arrow-down').addEventListener('click', function () {
 });
 
 document.querySelector('.navbar').addEventListener('mouseover', function (e) {
-    //get random number, 1 or 2
     let random = Math.floor(Math.random() * 2) + 1;
     console.log(random);
     if (e.target.tagName === 'A') {
