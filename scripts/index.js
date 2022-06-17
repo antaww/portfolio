@@ -1,5 +1,13 @@
 let arrowDown = document.querySelector('.arrow-down');
 
+document.querySelector('.navbar').addEventListener('click', function (e) {
+    myFullpage.moveTo(e.target.dataset.sectionId);
+});
+
+arrowDown.addEventListener('click', function () {
+    myFullpage.moveSectionDown();
+});
+
 function randomColor() {
     let colorsPalette = ['#F7F6CF', '#F4CFDF',
         '#9AC8EB', '#E7CBA9',
@@ -14,12 +22,25 @@ function randomColor() {
     return [color1, color2];
 }
 
+function hexaToRgb(hex) {
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    result = "rgb(" + parseInt(result[1], 16) + ", " + parseInt(result[2], 16) + ", " + parseInt(result[3], 16) + ")";
+    return result
+}
+
 
 window.onload = function () {
     let color = 'linear-gradient(to ' + 'bottom' + ', ' + randomColor()[0] + ', ' + randomColor()[1] + ')';
     let section1 = document.getElementById('section1');
     section1.style.background = color;
+    let nameContainer = document.querySelector('.name-container');
+    let name1 = document.querySelector('.name1');
+    let name1width = name1.offsetWidth;
+    let name2 = document.querySelector('.name2');
+    name2.style.paddingLeft = name1width/1.18 + 'px';
+    nameContainer.style.lineHeight = name1.offsetHeight/1.5 + 'px';
 }
+
 
 let myFullpage = new fullpage('#fullpage', {
     autoScrolling: true,
@@ -37,7 +58,7 @@ let myFullpage = new fullpage('#fullpage', {
             setTimeout(function () {
                 arrowDown.classList.add('hide');
                 arrowDown.classList.remove('fadeOutUp');
-            }, 500);
+            }, 450);
         } else if (arrowDown.classList.contains('hide')) {
             arrowDown.classList.remove('hide');
             arrowDown.classList.add('fadeInDown');
@@ -72,7 +93,7 @@ let myFullpage = new fullpage('#fullpage', {
             }
         }
         let colorPicked = randomColor()[0];
-        while (colorPicked === rgbCopiedColor) {
+        while (hexaToRgb(colorPicked) === rgbCopiedColor) {
             colorPicked = randomColor()[0];
         }
         if (direction === 'down') { //apply copied color to the top of the next currentSection
@@ -83,14 +104,6 @@ let myFullpage = new fullpage('#fullpage', {
         nextSection.style.background = color;
     },
 })
-
-document.querySelector('.navbar').addEventListener('click', function (e) {
-    myFullpage.moveTo(e.target.dataset.sectionId);
-});
-
-arrowDown.addEventListener('click', function () {
-    myFullpage.moveSectionDown();
-});
 
 const random = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
 let crossBarGlitchTexts = document.querySelectorAll(".cross-bar-glitch");
