@@ -8,26 +8,6 @@ arrowDown.addEventListener('click', function () {
     myFullpage.moveSectionDown();
 });
 
-function randomColor() {
-    let colorsPalette = ['#F7F6CF', '#F4CFDF',
-        '#9AC8EB', '#E7CBA9',
-        '#EEBAB2', '#E5DB9C', '#b29bc2',
-        '#39b2a7', '#98D4BB', '#D5E4C3'];
-    let color1 = '';
-    let color2 = '';
-    while (color1 === color2) {
-        color1 = colorsPalette[Math.floor(Math.random() * colorsPalette.length)];
-        color2 = colorsPalette[Math.floor(Math.random() * colorsPalette.length)];
-    }
-    return [color1, color2];
-}
-
-function hexaToRgb(hex) {
-    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    result = "rgb(" + parseInt(result[1], 16) + ", " + parseInt(result[2], 16) + ", " + parseInt(result[3], 16) + ")";
-    return result
-}
-
 
 window.onload = function () {
     let color = 'linear-gradient(to ' + 'bottom' + ', ' + randomColor()[0] + ', ' + randomColor()[1] + ')';
@@ -37,8 +17,8 @@ window.onload = function () {
     let name1 = document.querySelector('.name1');
     let name1width = name1.offsetWidth;
     let name2 = document.querySelector('.name2');
-    name2.style.paddingLeft = name1width/1.18 + 'px';
-    nameContainer.style.lineHeight = name1.offsetHeight/1.5 + 'px';
+    name2.style.paddingLeft = name1width / 1.18 + 'px';
+    nameContainer.style.lineHeight = name1.offsetHeight / 1.5 + 'px';
 }
 
 
@@ -105,29 +85,41 @@ let myFullpage = new fullpage('#fullpage', {
     },
 })
 
-const random = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
-let crossBarGlitchTexts = document.querySelectorAll(".cross-bar-glitch");
-crossBarGlitchTexts.forEach(text => {
-    let content = text.textContent;
-    text.textContent = "";
-    // Glitch Text
-    let slice = text.dataset.slice;
-    let glitchText = document.createElement("div");
-    glitchText.className = "glitch";
-    glitchText.style.setProperty("--slice-count", slice);
-    for (let i = 0; i <= Number(slice); i++) {
-        let span = document.createElement("span");
-        span.textContent = content;
-        span.style.setProperty("--i", `${i + 1}`);
-        if (i !== Number(slice)) {
-            span.style.animationDelay = `${600 + random(100, 300)}ms`;
-        }
-        glitchText.append(span);
+//
+// UTILS
+//
+
+//FUNCTIONS
+/**
+ * It returns an array of two random colors from a predefined array of colors
+ * @returns An array of two random colors.
+ */
+function randomColor() {
+    let colorsPalette = ['#F7F6CF', '#F4CFDF',
+        '#9AC8EB', '#E7CBA9',
+        '#EEBAB2', '#E5DB9C', '#b29bc2',
+        '#39b2a7', '#98D4BB', '#D5E4C3'];
+    let color1 = '';
+    let color2 = '';
+    while (color1 === color2) {
+        color1 = colorsPalette[Math.floor(Math.random() * colorsPalette.length)];
+        color2 = colorsPalette[Math.floor(Math.random() * colorsPalette.length)];
     }
-    text.appendChild(glitchText);
-});
+    return [color1, color2];
+}
 
+/**
+ * It takes a hexadecimal color code and returns the corresponding RGB color code
+ * @param hex - The hexadecimal color code to convert.
+ * @returns the rgb value of the hexadecimal value passed in.
+ */
+function hexaToRgb(hex) {
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    result = "rgb(" + parseInt(result[1], 16) + ", " + parseInt(result[2], 16) + ", " + parseInt(result[3], 16) + ")";
+    return result
+}
 
+//OBSERVER
 const startAnimation = (entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
