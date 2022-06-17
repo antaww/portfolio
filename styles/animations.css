@@ -1,0 +1,11 @@
+.fadeOutUp {
+    animation: fadeOutUp .7s ease-in-out;
+}
+
+.fadeInDown {
+    animation: fadeInDown .7s ease-in-out;
+}
+
+.fadeInUp {
+    animation: fadeInUp .7s ease-in-out ;
+}

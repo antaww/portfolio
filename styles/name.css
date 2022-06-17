@@ -4,6 +4,10 @@
     font-size: 5em;
     letter-spacing: 0.08em;
     color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    visibility: visible !important;
+    opacity: 0.9;
 }
 
 .name1 {
@@ -18,8 +22,8 @@
 
 .cross-bar-glitch .glitch {
     opacity: 0;
-    -webkit-animation: reveal forwards 0.3s;
-    animation: reveal forwards 0.3s;
+    -webkit-animation: reveal forwards 0.6s;
+    animation: reveal forwards 0.6s;
     -webkit-animation-delay: 0.6s;
     animation-delay: 0.6s;
 }

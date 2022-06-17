@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
 
 :root {
-    --text-color: #2d2d2d;
+    --text-color: rgba(0, 0, 0, 0.73);
+}
+
+* {
+    user-select: none;
 }
 
 body {
@@ -69,6 +73,7 @@ body {
     width: fit-content;
     height: fit-content;
     z-index: 999;
+    color: var(--text-color);
 }
 
 .arrow-down > i {
@@ -87,6 +92,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: var(--text-color);
+}
+
+.needAnimation {
     visibility: hidden;
 }
 
@@ -94,14 +103,9 @@ body {
     display: none;
 }
 
-.fadeOutUp {
-    animation: fadeOutUp 0.5s ease-in-out;
-}
-
-.fadeInDown {
-    animation: fadeInDown 0.5s ease-in-out;
-}
-
-.fadeInUp {
-    animation: fadeInUp 0.5s ease-in-out ;
+.title {
+    color: var(--text-color);
+    filter: brightness(2);
+    opacity: 70%;
+    font-size: 17px;
 }

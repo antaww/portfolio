@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92c01552-aec6-4806-9b57-816491ea00f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/glitch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/animations.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
@@ -21,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -72,7 +72,7 @@
       <workItem from="1655029484959" duration="178000" />
       <workItem from="1655409034481" duration="3723000" />
       <workItem from="1655412996522" duration="8012000" />
-      <workItem from="1655494126637" duration="6344000" />
+      <workItem from="1655494126637" duration="12291000" />
     </task>
     <servers />
   </component>

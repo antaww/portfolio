@@ -5,6 +5,7 @@
     <title>Portfolio</title>
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/name.css">
+    <link rel="stylesheet" href="styles/animations.css">
     <script defer src="scripts/index.js"></script>
     <script defer src="scripts/glitch.js"></script>
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.css"
@@ -15,12 +16,12 @@
 <body>
 <div class="container">
     <div class="navbar">
-        <a data-section-id="1" id="homeBtn">Home</a>
-        <a data-section-id="2" id="aboutBtn">About</a>
-        <a data-section-id="3" id="projectsBtn">Projects</a>
-        <a data-section-id="4" id="contactBtn">Contact</a>
+        <a data-section-id="1" data-animation-delay="1100" data-animation-name="fadeInUp" class="needAnimation" id="homeBtn">Home</a>
+        <a data-section-id="2" data-animation-delay="1300" data-animation-name="fadeInDown" class="needAnimation" id="aboutBtn">About</a>
+        <a data-section-id="3" data-animation-delay="1500" data-animation-name="fadeInUp" class="needAnimation" id="projectsBtn">Projects</a>
+        <a data-section-id="4" data-animation-delay="1700" data-animation-name="fadeInDown" class="needAnimation" id="contactBtn">Contact</a>
     </div>
-    <div class="arrow-down">
+    <div data-animation-delay="2000" data-animation-name="fadeInUp" class="arrow-down needAnimation">
         <i class="fas fa-angle-down"></i>
     </div>
     <div id="fullpage">
@@ -30,21 +31,21 @@
                     <div class="name1 cross-bar-glitch" data-slice="15">PIZZETTA</div>
                     <div class="name2 cross-bar-glitch" data-slice="15">Antoine</div>
                 </div>
-                <div class="title" data-slice="15">Web Developer</div>
+                <div data-animation-delay="1000" data-animation-name="fadeInUp" class="title needAnimation">Full-stack developer</div>
             </div>
         </div>
         <div class="section" id="section2">
-            <div class="section-container">
+            <div data-animation-name="fadeInDown" class="section-container needAnimation">
                 <h1>ABOUT</h1>
             </div>
         </div>
         <div class="section" id="section3">
-            <div class="section-container">
+            <div data-animation-name="fadeInUp" class="section-container needAnimation">
                 <h1>PROJECTS</h1>
             </div>
         </div>
         <div class="section" id="section4">
-            <div class="section-container">
+            <div data-animation-name="fadeInUp" class="section-container needAnimation">
                 <h1>CONTACT</h1>
             </div>
         </div>

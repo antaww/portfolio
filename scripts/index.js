@@ -1,6 +1,12 @@
 let arrowDown = document.querySelector('.arrow-down');
+let navbar = document.querySelector('.navbar');
+let section1 = document.getElementById('section1');
 
-document.querySelector('.navbar').addEventListener('click', function (e) {
+let rgb;
+let color;
+
+
+navbar.addEventListener('click', function (e) {
     myFullpage.moveTo(e.target.dataset.sectionId);
 });
 
@@ -10,13 +16,17 @@ arrowDown.addEventListener('click', function () {
 
 
 window.onload = function () {
-    let color = 'linear-gradient(to ' + 'bottom' + ', ' + randomColor()[0] + ', ' + randomColor()[1] + ')';
-    let section1 = document.getElementById('section1');
+    let firstGradient = randomColor()[0];
+    let secondGradient = randomColor()[1];
+    while (firstGradient === secondGradient) {
+        secondGradient = randomColor()[1];
+    }
+    color = 'linear-gradient(to ' + 'bottom' + ', ' + firstGradient + ', ' + secondGradient + ')';
     section1.style.background = color;
-    let nameContainer = document.querySelector('.name-container');
-    let name1 = document.querySelector('.name1');
-    let name1width = name1.offsetWidth;
-    let name2 = document.querySelector('.name2');
+    let nameContainer = document.querySelector('.name-container'); //MUST BE DECLARED HERE
+    let name1 = document.querySelector('.name1'); //MUST BE DECLARED HERE
+    let name2 = document.querySelector('.name2'); //MUST BE DECLARED HERE
+    let name1width = name1.offsetWidth; //MUST BE DECLARED HERE
     name2.style.paddingLeft = name1width / 1.18 + 'px';
     nameContainer.style.lineHeight = name1.offsetHeight / 1.5 + 'px';
 }
@@ -49,7 +59,6 @@ let myFullpage = new fullpage('#fullpage', {
         let currentSectionIndex = origin.index;
         let currentSection = document.querySelector(`.section:nth-child(${currentSectionIndex + 1})`);
         let currentSectionBackground = currentSection.style.background;
-        let rgb;
         if (direction === 'up') { //copy the top color of current currentSection
             rgb = currentSectionBackground.split('rgb(')[1].split(')')[0].split(',');
         } else if (direction === 'down') { //copy the bottom color of current currentSection
@@ -60,7 +69,6 @@ let myFullpage = new fullpage('#fullpage', {
         });
         let rgbCopiedColor = 'rgb(' + rgb[0] + ', ' + rgb[1] + ', ' + rgb[2] + ')'; //cast rgb array to string in right format
         let nextSection = destination.item;
-        let color;
         if (destination.index > origin.index + 1) { //if scroll down more than one currentSection
             for (let i = origin.index + 1; i < destination.index; i++) {
                 let section = document.querySelector(`.section:nth-child(${i + 1})`);
@@ -123,17 +131,28 @@ function hexaToRgb(hex) {
 const startAnimation = (entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            setTimeout(function () {
-                entry.target.style.visibility = "visible";
-                entry.target.classList.add("fadeInUp");
-            }, 200);
+            let animationName = entry.target.dataset.animationName
+            if (!entry.target.classList.contains(`${animationName}`)) {
+                let timeoutValue = 200;
+                if (entry.target.dataset.animationDelay) {
+                    timeoutValue = parseInt(entry.target.dataset.animationDelay);
+                }
+                setTimeout(function () {
+                    entry.target.style.visibility = "visible";
+                    entry.target.classList.add(`${animationName}`);
+                    console.log(animationName, timeoutValue);
+                }, timeoutValue);
+            }
         }
     });
 };
 const observer = new IntersectionObserver(startAnimation);
 const options = {root: null, rootMargin: '0px', threshold: 1};
 
-const elements = document.querySelectorAll('.section-container');
+const elements = document.querySelectorAll('.needAnimation');
 elements.forEach(el => {
     observer.observe(el, options);
 });
+
+//todo: régler le bug de couleur après l'animation
+//todo: régler l'animation de l'arrowDown
