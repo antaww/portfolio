@@ -9,3 +9,19 @@
 .fadeInUp {
     animation: fadeInUp .7s ease-in-out ;
 }
+
+.fadeInLeft {
+    animation: fadeInLeft .7s ease-in-out;
+}
+
+.fadeInRight {
+    animation: fadeInRight .7s ease-in-out;
+}
+
+.fadeIn {
+    animation: fadeIn .7s ease-in-out;
+}
+
+.bounceIn {
+    animation: bounceIn .7s ease-in-out;
+}

@@ -2,10 +2,12 @@
 
 :root {
     --text-color: rgba(0, 0, 0, 0.73);
+    --gold-color: #c4aa64d4;
 }
 
 * {
     user-select: none;
+    text-decoration: none;
 }
 
 body {
@@ -53,6 +55,11 @@ body {
 .navbar > a:hover::after {
     opacity: 1;
     width: 100%;
+}
+
+#fp-nav {
+    visibility: hidden;
+    transform: translateY(-50%) !important;
 }
 
 #fp-nav ul li .fp-tooltip {
@@ -109,3 +116,59 @@ body {
     opacity: 70%;
     font-size: 17px;
 }
+
+.about-container {
+    background-color: #ffffff8a;
+    padding: 18px;
+    display: flex;
+    flex-direction: row;
+    color: var(--text-color);
+    flex-flow: wrap;
+    width: fit-content;
+    font-size: 17px;
+    max-width: 700px;
+    overflow: hidden;
+    align-items: center;
+}
+
+.about-container img {
+    width: 100%;
+    height: 24px;
+}
+
+.about-container > div > div { /*Select the second child of about-container (example: .about-age)*/
+    display: flex;
+    flex-direction: row;
+}
+
+.about-gold {
+    color: var(--gold-color);
+    font-weight: 601;
+    width: 110px;
+}
+
+.about-left {
+    padding-right: 15px;
+    border-right: 1px solid var(--gold-color);;
+    height: fit-content;
+}
+
+.about-right {
+    padding-left: 15px;
+    flex: 1;
+}
+
+a {
+    color: var(--text-color);
+    transition: all .3s;
+}
+
+.about-mail-content a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 600;
+}
+

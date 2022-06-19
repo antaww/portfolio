@@ -1,9 +1,13 @@
 let arrowDown = document.querySelector('.arrow-down');
 let navbar = document.querySelector('.navbar');
 let section1 = document.getElementById('section1');
+let aboutAge = document.querySelector('.about-age-content');
 
 let rgb;
 let color;
+
+let birthdayDate = new Date('2003-12-06'); //years-months-days
+let today = new Date();
 
 const defaultAnimationDelay = 200; //in ms
 
@@ -16,8 +20,22 @@ arrowDown.addEventListener('click', function () {
     myFullpage.moveSectionDown();
 });
 
+window.addEventListener('load', function () {
+    //ADDING FP-NAV TO THE OBSERVER
+    let fpNav = document.getElementById('fp-nav');
+    fpNav.dataset.animationName = 'fadeInRight';
+    fpNav.dataset.animationDelay = '2200';
+    let fpNavObserver = new IntersectionObserver(startAnimation, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    });
+    fpNavObserver.observe(fpNav);
+});
+
 
 window.onload = function () {
+    //RANDOM BACKGROUND COLOR FOR THE FIRST SECTION
     let firstGradient = randomColor()[0];
     let secondGradient = randomColor()[1];
     while (firstGradient === secondGradient) {
@@ -25,12 +43,17 @@ window.onload = function () {
     }
     color = 'linear-gradient(to ' + 'bottom' + ', ' + firstGradient + ', ' + secondGradient + ')';
     section1.style.background = color;
+
+    //ALIGNMENT OF NAME
     let nameContainer = document.querySelector('.name-container'); //MUST BE DECLARED HERE
     let name1 = document.querySelector('.name1'); //MUST BE DECLARED HERE
     let name2 = document.querySelector('.name2'); //MUST BE DECLARED HERE
     let name1width = name1.offsetWidth; //MUST BE DECLARED HERE
     name2.style.paddingLeft = name1width / 1.18 + 'px';
     nameContainer.style.lineHeight = name1.offsetHeight / 1.5 + 'px';
+
+    //FILLING THE ABOUT-AGE
+    aboutAge.innerHTML = getAge();
 }
 
 
@@ -129,6 +152,20 @@ function hexaToRgb(hex) {
     return result
 }
 
+/**
+ * If the current month is less than the month of the birthday, or if the current month is the same as the month of the
+ * birthday but the current day is less than the day of the birthday, then subtract one from the age
+ * @returns The age of the person.
+ */
+function getAge() {
+    let age = today.getFullYear() - birthdayDate.getFullYear();
+    let m = today.getMonth() - birthdayDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthdayDate.getDate())) {
+        age--;
+    }
+    return age.toString();
+}
+
 //OBSERVER
 const startAnimation = (entries, observer) => {
     entries.forEach(entry => {
@@ -147,7 +184,6 @@ const options = {root: null, rootMargin: '0px', threshold: 1};
 const elements = document.querySelectorAll('.needAnimation');
 elements.forEach(el => {
     observer.observe(el, options);
-    console.log(el);
 });
 
 //todo: régler le bug de couleur après l'animation
