@@ -5,6 +5,8 @@ let section1 = document.getElementById('section1');
 let rgb;
 let color;
 
+const defaultAnimationDelay = 200; //in ms
+
 
 navbar.addEventListener('click', function (e) {
     myFullpage.moveTo(e.target.dataset.sectionId);
@@ -130,19 +132,12 @@ function hexaToRgb(hex) {
 //OBSERVER
 const startAnimation = (entries, observer) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting) { //if the element is in the viewport
             let animationName = entry.target.dataset.animationName
-            if (!entry.target.classList.contains(`${animationName}`)) {
-                let timeoutValue = 200;
-                if (entry.target.dataset.animationDelay) {
-                    timeoutValue = parseInt(entry.target.dataset.animationDelay);
-                }
-                setTimeout(function () {
-                    entry.target.style.visibility = "visible";
-                    entry.target.classList.add(`${animationName}`);
-                    console.log(animationName, timeoutValue);
-                }, timeoutValue);
-            }
+            setTimeout(function () {
+                entry.target.style.visibility = "visible";
+                entry.target.classList.add(`${animationName}`);
+            }, parseInt(entry.target.dataset.animationDelay) || defaultAnimationDelay); //if the animationDelay is not defined, it will be defaultAnimationDelay
         }
     });
 };
@@ -152,6 +147,7 @@ const options = {root: null, rootMargin: '0px', threshold: 1};
 const elements = document.querySelectorAll('.needAnimation');
 elements.forEach(el => {
     observer.observe(el, options);
+    console.log(el);
 });
 
 //todo: régler le bug de couleur après l'animation
