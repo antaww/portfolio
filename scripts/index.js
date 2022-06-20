@@ -11,6 +11,12 @@ let today = new Date();
 
 const defaultAnimationDelay = 200; //in ms
 
+let countOptions = {
+    useEasing: true,
+    separator: '',
+};
+let ageCount = new CountUp('MyAge', 0, getAge(), 0, 3, countOptions);
+
 
 navbar.addEventListener('click', function (e) {
     myFullpage.moveTo(e.target.dataset.sectionId);
@@ -51,9 +57,6 @@ window.onload = function () {
     let name1width = name1.offsetWidth; //MUST BE DECLARED HERE
     name2.style.paddingLeft = name1width / 1.18 + 'px';
     nameContainer.style.lineHeight = name1.offsetHeight / 1.5 + 'px';
-
-    //FILLING THE ABOUT-AGE
-    aboutAge.innerHTML = getAge();
 }
 
 
@@ -170,6 +173,11 @@ function getAge() {
 const startAnimation = (entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) { //if the element is in the viewport
+            if (entry.target.querySelector('#MyAge')) { //if entry target has a child with id 'MyAge'
+                setTimeout(function () {
+                    ageCount.start(); //start the count animation
+                },parseInt(entry.target.dataset.animationDelay)+600 || defaultAnimationDelay);
+            }
             let animationName = entry.target.dataset.animationName
             setTimeout(function () {
                 entry.target.style.visibility = "visible";
