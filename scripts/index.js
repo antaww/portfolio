@@ -2,14 +2,17 @@ let arrowDown = document.querySelector('.arrow-down');
 let navbar = document.querySelector('.navbar');
 let section1 = document.getElementById('section1');
 let aboutAge = document.querySelector('.about-age-content');
+let navbarA = document.querySelectorAll('.navbar a');
 
 let rgb;
 let color;
+let timer;
 
 let birthdayDate = new Date('2003-12-06'); //years-months-days
 let today = new Date();
 
 const defaultAnimationDelay = 200; //in ms
+let duration = 0;
 
 let countOptions = {
     useEasing: true,
@@ -31,14 +34,9 @@ window.addEventListener('load', function () {
     let fpNav = document.getElementById('fp-nav');
     fpNav.dataset.animationName = 'fadeInRight';
     fpNav.dataset.animationDelay = '2200';
-    let fpNavObserver = new IntersectionObserver(startAnimation, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5
-    });
+    let fpNavObserver = new IntersectionObserver(startAnimation, {root: null, rootMargin: '0px', threshold: 0.5});
     fpNavObserver.observe(fpNav);
 });
-
 
 window.onload = function () {
     //RANDOM BACKGROUND COLOR FOR THE FIRST SECTION
@@ -60,9 +58,17 @@ window.onload = function () {
 
     //UNDERLINE FIRST NAVBAR ITEM
     let navbarFirstA = document.querySelector('.navbar a');
+    let navClean = true;
     setTimeout(function () {
-        navbarFirstA.classList.add('navbar-after');
-    },parseInt(navbarFirstA.dataset.animationDelay)+500 || defaultAnimationDelay);
+        navbarA.forEach(function (element) {
+            if(element.classList.contains('navbar-after')) {
+                navClean = false;
+            }
+        });
+        if (navClean) {
+            navbarFirstA.classList.add('navbar-after');
+        }
+    }, parseInt(navbarFirstA.dataset.animationDelay) + 500 || defaultAnimationDelay);
 }
 
 
@@ -127,7 +133,6 @@ let myFullpage = new fullpage('#fullpage', {
 
         //UNDERLINE NAVBAR
         let currentSectionId = destination.index + 1;
-        let navbarA = document.querySelectorAll('.navbar a');
         navbarA.forEach(function (item) {
             if (item.dataset.sectionId === currentSectionId.toString()) {
                 item.classList.add('navbar-after');
@@ -135,7 +140,28 @@ let myFullpage = new fullpage('#fullpage', {
                 item.classList.remove('navbar-after');
             }
         });
+        let stars1 = document.querySelector('.stars1');
+        let stars2 = document.querySelector('.stars2');
+        let stars3 = document.querySelector('.stars3');
+
+
+        duration = 0;
+        if (timer) {
+            clearInterval(timer);
+        }
+        timer = setInterval(function () {
+            duration++;
+            let yPos = destination.item.offsetTop * 0.8;
+            yPos += duration * 0.5;
+            stars1.style.transform = `translateY(-${yPos * 0.5}px)`;
+            stars2.style.transform = `translateY(-${yPos * 0.3}px)`;
+            stars3.style.transform = `translateY(-${yPos * 0.1}px)`;
+        }, 1);
     },
+    afterLoad: function (origin, destination, direction) {
+        clearInterval(timer);
+        timer = null;
+    }
 })
 
 //
