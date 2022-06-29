@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/name.css">
     <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/about.css">
     <script defer src="scripts/index.js"></script>
     <script defer src="scripts/glitch.js"></script>
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.css"
@@ -22,8 +23,10 @@
         <a data-section-id="2" data-animation-delay="1300" data-animation-name="fadeInDown" class="needAnimation"
            id="aboutBtn">About</a>
         <a data-section-id="3" data-animation-delay="1500" data-animation-name="fadeInUp" class="needAnimation"
-           id="projectsBtn">Projects</a>
+           id="skillsBtn">Skills</a>
         <a data-section-id="4" data-animation-delay="1700" data-animation-name="fadeInDown" class="needAnimation"
+           id="projectsBtn">Projects</a>
+        <a data-section-id="5" data-animation-delay="1900" data-animation-name="fadeInUp" class="needAnimation"
            id="contactBtn">Contact</a>
     </div>
     <div data-animation-delay="2000" data-animation-name="fadeInUp" class="arrow-down needAnimation">
@@ -44,49 +47,63 @@
         <div class="section" id="section2">
             <div class="section-container">
                 <h1 class="needAnimation" data-animation-name="fadeInUp" data-animation-delay="100">ABOUT ME</h1>
-                <div class="about-container needAnimation" data-animation-name="fadeInUp" data-animation-delay="200">
-                    <div class="about-left">
-                        <div class="about-name needAnimation" data-animation-delay="200" data-animation-name="fadeIn">
-                            <div class="about-gold">Name :</div>
-                            <div class="about-name-1">PIZZETTA Antoine</div>
-                        </div>
-                        <div class="about-age needAnimation" data-animation-delay="300" data-animation-name="fadeIn">
-                            <div class="about-gold">Age :</div>
-                            <div class="about-age-content" id="MyAge">0</div> <!--AUTO FILLED IN JS-->
-                        </div>
-                        <div class="about-location needAnimation" data-animation-delay="500"
-                             data-animation-name="fadeIn">
-                            <div class="about-gold">City :</div>
-                            <div class="about-location-content">Aix-en-Provence</div>
-                        </div>
-                        <div class="about-mail needAnimation" data-animation-delay="700" data-animation-name="fadeIn">
-                            <div class="about-gold">Mail :</div>
-                            <div class="about-mail-content"><a href="mailto:antoine.pizzetta@ynov.com">antoine.pizzetta@ynov.com</a>
+                <div class="global-about-container">
+                    <div class="about-container needAnimation" data-animation-name="fadeInUp"
+                         data-animation-delay="200">
+                        <div class="about-left">
+                            <div class="about-name needAnimation" data-animation-delay="200"
+                                 data-animation-name="fadeIn">
+                                <div class="about-gold">Name :</div>
+                                <div class="about-name-1">PIZZETTA Antoine</div>
+                            </div>
+                            <div class="about-age needAnimation" data-animation-delay="300"
+                                 data-animation-name="fadeIn">
+                                <div class="about-gold">Age :</div>
+                                <div class="about-age-content" id="MyAge">0</div> <!--AUTO FILLED IN JS-->
+                            </div>
+                            <div class="about-location needAnimation" data-animation-delay="500"
+                                 data-animation-name="fadeIn">
+                                <div class="about-gold">City :</div>
+                                <div class="about-location-content">Aix-en-Provence</div>
+                            </div>
+                            <div class="about-mail needAnimation" data-animation-delay="700"
+                                 data-animation-name="fadeIn">
+                                <div class="about-gold">Mail :</div>
+                                <div class="about-mail-content"><a href="mailto:antoine.pizzetta@ynov.com">antoine.pizzetta@ynov.com</a>
+                                </div>
+                            </div>
+                            <div class="about-git needAnimation" data-animation-delay="900"
+                                 data-animation-name="fadeIn">
+                                <div class="about-gold">Github :</div>
+                                <div class="about-git-content"><a href="https://github.com/antaww" target="_blank">
+                                    <img src="https://github.com/favicon.ico"></a></div>
                             </div>
                         </div>
-                        <div class="about-git needAnimation" data-animation-delay="900" data-animation-name="fadeIn">
-                            <div class="about-gold">Github :</div>
-                            <div class="about-git-content"><a href="https://github.com/antaww" target="_blank">
-                                <img src="https://github.com/favicon.ico"></a></div>
+                        <div class="about-right">
+                            <div class="about-text needAnimation" data-animation-delay="500"
+                                 data-animation-name="fadeIn">
+                                <p>I study at <a href="https://www.ynov.com/" target="_blank"
+                                                 style="text-decoration: underline">Ynov</a>, Aix-en-Provence.
+                                    <br>I am currently learning different coding languages, network & TOS.
+                                    <br>I aspire to become a full-stack developer, that is why I want to improve myself
+                                    in
+                                    this school.</p></div>
                         </div>
-                    </div>
-                    <div class="about-right">
-                        <div class="about-text needAnimation" data-animation-delay="500" data-animation-name="fadeIn">
-                            <p>I study at <a href="https://www.ynov.com/" target="_blank"
-                                             style="text-decoration: underline">Ynov</a>, Aix-en-Provence.
-                                <br>I am currently learning different coding languages, network & TOS.
-                                <br>I aspire to become a full-stack developer, that is why I want to improve myself in
-                                this school.</p></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="section" id="section3">
+            <div class="section-container">
+                <h1 class="needAnimation" data-animation-name="fadeInUp" data-animation-delay="100">SKILLS</h1>
+            </div>
+        </div>
+        <div class="section" id="section4">
             <div data-animation-name="fadeInUp" class="section-container needAnimation">
                 <h1>PROJECTS</h1>
             </div>
         </div>
-        <div class="section" id="section4">
+        <div class="section" id="section5">
             <div data-animation-name="fadeInUp" class="section-container needAnimation">
                 <h1>CONTACT</h1>
             </div>

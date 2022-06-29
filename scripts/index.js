@@ -57,6 +57,12 @@ window.onload = function () {
     let name1width = name1.offsetWidth; //MUST BE DECLARED HERE
     name2.style.paddingLeft = name1width / 1.18 + 'px';
     nameContainer.style.lineHeight = name1.offsetHeight / 1.5 + 'px';
+
+    //UNDERLINE FIRST NAVBAR ITEM
+    let navbarFirstA = document.querySelector('.navbar a');
+    setTimeout(function () {
+        navbarFirstA.classList.add('navbar-after');
+    },parseInt(navbarFirstA.dataset.animationDelay)+500 || defaultAnimationDelay);
 }
 
 
@@ -65,13 +71,13 @@ let myFullpage = new fullpage('#fullpage', {
     keyboardScrolling: true,
     navigation: true,
     navigationPosition: 'right',
-    navigationTooltips: ['Home', 'About', 'Projects', 'Contact'],
+    navigationTooltips: ['Home', 'About', 'Skills', 'Projects', 'Contact'],
     navigationTooltipsFontFamily: 'Poppins',
     loopBottom: false,
     loopTop: false,
     dragAndMove: true,
     onLeave: function (origin, destination, direction) {
-        if (destination.index === 3) {
+        if (destination.index === document.querySelectorAll('.section').length - 1) {
             arrowDown.classList.add('fadeOutUp');
             setTimeout(function () {
                 arrowDown.classList.add('hide');
@@ -118,6 +124,17 @@ let myFullpage = new fullpage('#fullpage', {
             color = 'linear-gradient(to ' + 'bottom' + ', ' + colorPicked + ', ' + rgbCopiedColor + ')';
         }
         nextSection.style.background = color;
+
+        //UNDERLINE NAVBAR
+        let currentSectionId = destination.index + 1;
+        let navbarA = document.querySelectorAll('.navbar a');
+        navbarA.forEach(function (item) {
+            if (item.dataset.sectionId === currentSectionId.toString()) {
+                item.classList.add('navbar-after');
+            } else if (item.classList.contains('navbar-after')) {
+                item.classList.remove('navbar-after');
+            }
+        });
     },
 })
 
@@ -176,7 +193,7 @@ const startAnimation = (entries, observer) => {
             if (entry.target.querySelector('#MyAge')) { //if entry target has a child with id 'MyAge'
                 setTimeout(function () {
                     ageCount.start(); //start the count animation
-                },parseInt(entry.target.dataset.animationDelay)+600 || defaultAnimationDelay);
+                }, parseInt(entry.target.dataset.animationDelay) + 600 || defaultAnimationDelay);
             }
             let animationName = entry.target.dataset.animationName
             setTimeout(function () {

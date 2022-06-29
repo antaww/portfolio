@@ -57,6 +57,11 @@ body {
     width: 100%;
 }
 
+.navbar > a.navbar-after::after {
+    opacity: 1;
+    width: 100%;
+}
+
 #fp-nav {
     visibility: hidden;
     transform: translateY(-50%) !important;
@@ -117,58 +122,46 @@ body {
     font-size: 17px;
 }
 
-.about-container {
-    background-color: #ffffff8a;
-    padding: 18px;
-    display: flex;
-    flex-direction: row;
-    color: var(--text-color);
-    flex-flow: wrap;
-    width: fit-content;
-    font-size: 17px;
-    max-width: 700px;
-    overflow: hidden;
-    align-items: center;
-}
-
-.about-container img {
-    width: 100%;
-    height: 24px;
-}
-
-.about-container > div > div { /*Select the second child of about-container (example: .about-age)*/
-    display: flex;
-    flex-direction: row;
-}
-
-.about-gold {
-    color: var(--gold-color);
-    font-weight: 601;
-    width: 110px;
-}
-
-.about-left {
-    padding-right: 15px;
-    border-right: 1px solid var(--gold-color);;
-    height: fit-content;
-}
-
-.about-right {
-    padding-left: 15px;
-    flex: 1;
-}
-
 a {
     color: var(--text-color);
     transition: all .3s;
 }
 
-.about-mail-content a:hover {
-    text-decoration: underline;
-}
-
 h1 {
     font-size: 40px;
     font-weight: 600;
+}
+
+.skills-container {
+    background-color: #ffffff8a;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
+    width: fit-content;
+    font-size: 17px;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.global-about-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.about-container, .skills-container {
+    margin: 0px 20px;
+}
+
+.skill-bar-progress {
+    height: 8px;
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.09);
+    overflow: visible;
+    display: flex;
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
 }
 
