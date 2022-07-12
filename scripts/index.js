@@ -48,6 +48,16 @@ window.onload = function () {
     color = 'linear-gradient(to ' + 'bottom' + ', ' + firstGradient + ', ' + secondGradient + ')';
     section1.style.background = color;
 
+    document.querySelectorAll('.progress-title').forEach(function (item) {
+        let firstGradient = randomColor()[0];
+        let secondGradient = randomColor()[1];
+        while (firstGradient === secondGradient) {
+            secondGradient = randomColor()[1];
+        }
+        color = 'linear-gradient(to ' + 'right' + ', ' + firstGradient + ', ' + secondGradient + ')';
+        item.nextElementSibling.children[0].style.background = color;
+    });
+
     //ALIGNMENT OF NAME
     let nameContainer = document.querySelector('.name-container'); //MUST BE DECLARED HERE
     let name1 = document.querySelector('.name1'); //MUST BE DECLARED HERE
@@ -61,7 +71,7 @@ window.onload = function () {
     let navClean = true;
     setTimeout(function () {
         navbarA.forEach(function (element) {
-            if(element.classList.contains('navbar-after')) {
+            if (element.classList.contains('navbar-after')) {
                 navClean = false;
             }
         });
@@ -144,7 +154,6 @@ let myFullpage = new fullpage('#fullpage', {
         let stars2 = document.querySelector('.stars2');
         let stars3 = document.querySelector('.stars3');
 
-
         duration = 0;
         if (timer) {
             clearInterval(timer);
@@ -220,6 +229,14 @@ const startAnimation = (entries, observer) => {
                 setTimeout(function () {
                     ageCount.start(); //start the count animation
                 }, parseInt(entry.target.dataset.animationDelay) + 600 || defaultAnimationDelay);
+            }
+            if (entry.target.querySelector('.progress-bar')) {
+                setTimeout(function () {
+                document.querySelectorAll('.progress-title').forEach(function (item) {
+                    item.nextElementSibling.children[0].style.width = item.nextElementSibling.children[0].dataset.progress + '%';
+                    item.nextElementSibling.children[0].innerHTML = item.nextElementSibling.children[0].dataset.progress + '%';
+                });
+                }, parseInt(entry.target.dataset.animationDelay) || defaultAnimationDelay);
             }
             let animationName = entry.target.dataset.animationName
             setTimeout(function () {
