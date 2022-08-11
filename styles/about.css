@@ -1,6 +1,6 @@
 .about-container {
-    background-color: #ffffff8a;
-    padding: 18px;
+    background-color: #ffffff7a;
+    padding: 64px;
     display: flex;
     flex-direction: row;
     color: var(--text-color);

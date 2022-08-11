@@ -150,27 +150,7 @@ let myFullpage = new fullpage('#fullpage', {
                 item.classList.remove('navbar-after');
             }
         });
-        let stars1 = document.querySelector('.stars1');
-        let stars2 = document.querySelector('.stars2');
-        let stars3 = document.querySelector('.stars3');
-
-        duration = 0;
-        if (timer) {
-            clearInterval(timer);
-        }
-        timer = setInterval(function () {
-            duration++;
-            let yPos = destination.item.offsetTop * 0.8;
-            yPos += duration * 0.5;
-            stars1.style.transform = `translateY(-${yPos * 0.5}px)`;
-            stars2.style.transform = `translateY(-${yPos * 0.3}px)`;
-            stars3.style.transform = `translateY(-${yPos * 0.1}px)`;
-        }, 1);
     },
-    afterLoad: function (origin, destination, direction) {
-        clearInterval(timer);
-        timer = null;
-    }
 })
 
 //

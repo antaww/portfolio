@@ -3,6 +3,7 @@
 :root {
     --text-color: rgba(0, 0, 0, 0.73);
     --gold-color: #c4aa64d4;
+    --transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
 }
 
 * {
