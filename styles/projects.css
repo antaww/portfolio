@@ -1,20 +1,36 @@
+.projects-container {
+    flex: 1 1;
+    position: relative;
+}
+
 .project-box {
     position: relative;
-    display: grid;
+    display: none;
     gap: 10px;
     grid-template-columns: repeat(12, 1fr);
     -moz-box-align: center;
     align-items: center;
 }
 
-.project-box {
+.project-box .content-right{
     text-align: right;
+}
+
+.project-box .content-left{
+    text-align: left;
 }
 
 .project-box .project-content {
     position: relative;
     grid-area: 1 / 1 / -1 / 7;
+}
+
+.project-box .project-content.content-right {
     grid-column: 5 / -1;
+}
+
+.project-box .project-content.content-left {
+    grid-column: 1 / 9;
 }
 
 .project-box .project-overline {
@@ -24,12 +40,16 @@
     font-size: 14px;
     font-weight: 600;
     opacity: 48%;
+    z-index: 2;
+    position: relative;
 }
 
-.project-title {
+.project-box .project-title {
     color: #ccd6f6;
     font-size: clamp(24px, 5vw, 28px);
     margin: 0px 0px 20px;
+    z-index: 2;
+    position: relative;
 }
 
 .project-description {
@@ -52,13 +72,21 @@
     margin: 25px 0px 10px;
     padding: 0px;
     list-style: none;
+    justify-content: flex-start;
+}
+
+.project-tech-list.content-right {
     justify-content: flex-end;
 }
 
 .project-tech-list li {
-    margin: 0px 0px 5px 20px;
+    margin: 0px 20px 5px 0px;
     font-size: 13px;
     font-family: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+}
+
+.project-tech-list.content-right li {
+    margin: 0px 0px 5px 20px;
 }
 
 .project-links {
@@ -69,6 +97,10 @@
     margin-top: 10px;
     margin-left: -10px;
     color: #a8b2d1;
+    justify-content: flex-start;
+}
+
+.project-links.content-right {
     justify-content: flex-end;
 }
 
@@ -97,12 +129,15 @@
     grid-column-start: 6;
     grid-column-end: -1;
     position: relative;
+}
+
+.project-image.content-right {
     grid-column: 1 / 8;
 }
 
 .project-image img {
-    width:100%;
-    max-width: 100%;
+    width: 404px;
+    height: 200px;
     mix-blend-mode: multiply;
     background: transparent none repeat scroll 0% 0%;
     box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
@@ -132,3 +167,63 @@
     font-weight: 600;
     text-decoration: underline;
 }
+
+.btn-icon {
+    align-items: center;
+    height: 35px;
+    justify-content: center;
+    width: 35px;
+}
+.btn {
+    border: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1em;
+    margin: 0;
+    position: relative;
+    text-decoration: none;
+    transition: opacity .3s,box-shadow .3s,background-color .3s,color .3s;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.btn:hover {
+    opacity: .6;
+    text-decoration: none;
+}
+
+.btn-secondary.btn-filled, .btn-secondary.btn-filled:visited {
+    color: #000;
+}
+.btn-secondary.btn-filled {
+    background-color: #d7dac733;
+}
+
+.edit-page-pagination-buttons {
+    bottom: 0;
+    display: flex;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    justify-content: space-between;
+}
+
+.edit-page-pagination-buttons > div {
+    align-items: center;
+    display: flex;
+    pointer-events: auto;
+    margin: 0 10px;
+}
+
+.project-box.active {
+    display: grid;
+}
+
+

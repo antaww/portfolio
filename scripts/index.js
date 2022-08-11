@@ -3,6 +3,9 @@ let navbar = document.querySelector('.navbar');
 let section1 = document.getElementById('section1');
 let aboutAge = document.querySelector('.about-age-content');
 let navbarA = document.querySelectorAll('.navbar a');
+let sliderBtns = document.querySelectorAll('.btn');
+let projects = document.querySelectorAll('.project-box');
+let projectsLength = projects.length;
 
 let rgb;
 let color;
@@ -19,6 +22,34 @@ let countOptions = {
     separator: '',
 };
 let ageCount = new CountUp('MyAge', 0, getAge(), 0, 3, countOptions);
+
+sliderBtns.forEach(function (item) {
+    item.addEventListener('click', function () {
+        let displayedProjectId = document.querySelector('.project-box.active').dataset.projectId;
+        if (item.classList.contains('btn-right')) {
+            console.log('right');
+            if (displayedProjectId < projectsLength - 1) {
+                let nextProject = document.querySelector('.project-box[data-project-id="' + (parseInt(displayedProjectId) + 1) + '"]');
+                nextProject.classList.add('active');
+                document.querySelector('.project-box[data-project-id="' + displayedProjectId + '"]').classList.remove('active');
+            } else {
+                document.querySelector('.project-box[data-project-id="' + displayedProjectId + '"]').classList.remove('active');
+                document.querySelector('.project-box[data-project-id="0"]').classList.add('active');
+            }
+        }
+        if (item.classList.contains('btn-left')) {
+            console.log('left');
+            if (displayedProjectId > 0) {
+                let prevProject = document.querySelector('.project-box[data-project-id="' + (parseInt(displayedProjectId) - 1) + '"]');
+                prevProject.classList.add('active');
+                document.querySelector('.project-box[data-project-id="' + displayedProjectId + '"]').classList.remove('active');
+            } else {
+                document.querySelector('.project-box[data-project-id="' + displayedProjectId + '"]').classList.remove('active');
+                document.querySelector('.project-box[data-project-id="' + (projectsLength - 1) + '"]').classList.add('active');
+            }
+        }
+    });
+});
 
 
 navbar.addEventListener('click', function (e) {
@@ -212,10 +243,10 @@ const startAnimation = (entries, observer) => {
             }
             if (entry.target.querySelector('.progress-bar')) {
                 setTimeout(function () {
-                document.querySelectorAll('.progress-title').forEach(function (item) {
-                    item.nextElementSibling.children[0].style.width = item.nextElementSibling.children[0].dataset.progress + '%';
-                    item.nextElementSibling.children[0].innerHTML = item.nextElementSibling.children[0].dataset.progress + '%';
-                });
+                    document.querySelectorAll('.progress-title').forEach(function (item) {
+                        item.nextElementSibling.children[0].style.width = item.nextElementSibling.children[0].dataset.progress + '%';
+                        item.nextElementSibling.children[0].innerHTML = item.nextElementSibling.children[0].dataset.progress + '%';
+                    });
                 }, parseInt(entry.target.dataset.animationDelay) || defaultAnimationDelay);
             }
             let animationName = entry.target.dataset.animationName

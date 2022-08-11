@@ -121,6 +121,8 @@ body {
     filter: brightness(2);
     opacity: 70%;
     font-size: 21px;
+    z-index: 2;
+    position: relative;
 }
 
 a {

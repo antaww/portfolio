@@ -10,5 +10,10 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="animate.css" level="application" />
     <orderEntry type="library" name="simple-parallax-js" level="application" />
+    <orderEntry type="library" name="parallaxImg" level="application" />
+    <orderEntry type="library" name="jquery-3.6.0" level="application" />
+    <orderEntry type="library" name="jquery-migrate-3.4.0" level="application" />
+    <orderEntry type="library" name="countup.js" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>
