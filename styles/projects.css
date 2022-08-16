@@ -226,4 +226,8 @@
     display: grid;
 }
 
+.project-description > p {
+    user-select: text !important;
+}
+
 

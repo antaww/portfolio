@@ -48,3 +48,7 @@
     height: 24px;
     font-size: 24px;
 }
+
+.about-text > p, .about-name-1, .about-age-content, .about-location-content, .about-mail-content {
+    user-select: text !important;
+}
