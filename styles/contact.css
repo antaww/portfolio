@@ -90,3 +90,21 @@
 .contact-send, .contact-textarea textarea, .contact-input input{
     transition: all .3s;
 }
+
+.contact-top {
+    display: flex;
+    margin-bottom: 34px;
+    flex: 1;
+    gap: 5px;
+    width: 450px;
+    flex-flow: wrap;
+}
+
+.contact-top button {
+    height: 54px;
+    width: 100%;
+}
+
+button:hover {
+    cursor: pointer;
+}
