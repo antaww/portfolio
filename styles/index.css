@@ -120,7 +120,7 @@ body {
     color: var(--text-color);
     filter: brightness(2);
     opacity: 70%;
-    font-size: 21px;
+    font-size: 23px;
     z-index: 2;
     position: relative;
 }

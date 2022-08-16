@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/about.css">
     <link rel="stylesheet" href="styles/projects.css">
     <link rel="stylesheet" href="styles/skills.css">
+    <link rel="stylesheet" href="styles/contact.css">
     <script defer src="scripts/index.js"></script>
     <script defer src="scripts/glitch.js"></script>
     <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.css"
@@ -149,7 +150,8 @@
                 <div class="projects-container needAnimation" data-animation-delay="300" data-animation-name="fadeInUp">
                     <div class="edit-page-pagination-buttons">
                         <div class="needAnimation" data-animation-delay="1900" data-animation-name="fadeInLeft">
-                            <button tabindex="0" class="btn btn-icon btn-filled btn-secondary btn-left" type="button"><span
+                            <button tabindex="0" class="btn btn-icon btn-filled btn-secondary btn-left"
+                                    type="button"><span
                                     class="btn-label-wrap"><span class="btn-node"><svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="8" height="14" viewBox="0 0 8 14"><path
@@ -157,7 +159,8 @@
                                     stroke-linecap="round"></path></svg></span></span></button>
                         </div>
                         <div class="needAnimation" data-animation-delay="1900" data-animation-name="fadeInRight">
-                            <button tabindex="0" class="btn btn-icon btn-filled btn-secondary btn-right" type="button"><span
+                            <button tabindex="0" class="btn btn-icon btn-filled btn-secondary btn-right"
+                                    type="button"><span
                                     class="btn-label-wrap"><span class="btn-node"><svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="8" height="14" viewBox="0 0 8 14"><path
@@ -241,7 +244,9 @@
                                 <div class="project-description needAnimation" data-animation-delay="800"
                                      data-animation-name="fadeInLeft">
                                     <p>A simple guide for the game
-                                        <br><a href="https://animal-crossing.com/new-horizons/" rel="noopener noreferrer" target="_blank"> Animal Crossing New Horizons</a>.
+                                        <br><a href="https://animal-crossing.com/new-horizons/"
+                                               rel="noopener noreferrer" target="_blank"> Animal Crossing New
+                                            Horizons</a>.
                                         <br>It contains all the furniture and their variations,
                                         <br>as well as all the villagers and their own characteristics.</p>
                                 </div>
@@ -346,7 +351,9 @@
                                 </h3>
                                 <div class="project-description needAnimation" data-animation-delay="800"
                                      data-animation-name="fadeInLeft">
-                                    <p>A website about <a href="https://genshin.hoyoverse.com/en/home" rel="noopener noreferrer" target="_blank">Genshin Impact</a> that displays
+                                    <p>A website about <a href="https://genshin.hoyoverse.com/en/home"
+                                                          rel="noopener noreferrer" target="_blank">Genshin Impact</a>
+                                        that displays
                                         <br>news and precise information
                                         <br>about the characters from the game.</p>
                                 </div>
@@ -377,7 +384,8 @@
                         </div>
                         <div class="project-image needAnimation" data-animation-delay="800"
                              data-animation-name="fadeInRight">
-                            <a href="https://github.com/antaww/Build-Me-Paimon" rel="noopener noreferrer" target="_blank">
+                            <a href="https://github.com/antaww/Build-Me-Paimon" rel="noopener noreferrer"
+                               target="_blank">
                                 <img src="https://cdn.discordapp.com/attachments/987497527106494514/1008297383995654194/unknown.png">
                             </a>
                         </div>
@@ -485,8 +493,25 @@
             </div>
         </div>
         <div class="section" id="section5">
-            <div data-animation-name="fadeInUp" class="section-container needAnimation">
+            <div class="section-container needAnimation" data-animation-name="fadeInUp">
                 <h1>CONTACT</h1>
+                <form
+                        action="https://formspree.io/f/xpznzyad"
+                        method="POST"
+                        class="contact-form">
+                    <div class="form-top">
+                        <label class="contact-input">
+                            <input placeholder="Name" type="text" name="name" required>
+                        </label>
+                        <label class="contact-input">
+                            <input placeholder="Email" type="email" name="email" required>
+                        </label>
+                    </div>
+                    <label class="contact-textarea">
+                        <textarea placeholder="Message" name="message" required></textarea>
+                    </label>
+                    <button class="contact-send" type="submit">Send <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
             </div>
         </div>
     </div>
