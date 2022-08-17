@@ -43,7 +43,7 @@
     text-decoration: underline;
 }
 
-.about-linkedin-content i, .about-cv-content i {
+.about-linkedin-content i, .about-cv-content i, .about-internship-content i {
     color: black;
     height: 24px;
     font-size: 24px;

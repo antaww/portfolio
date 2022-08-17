@@ -96,7 +96,7 @@ body {
 }
 
 .arrow-down > i:hover {
-    transform: matrix3d(1, 0, 0, 0, 0.5, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    transform: translateY(10px);
     cursor: pointer;
 }
 
