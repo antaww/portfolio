@@ -15,5 +15,7 @@
     <orderEntry type="library" name="jquery-migrate-3.4.0" level="application" />
     <orderEntry type="library" name="countup.js" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="fullPage.js" level="application" />
+    <orderEntry type="library" name="74fed0e2b5" level="application" />
   </component>
 </module>

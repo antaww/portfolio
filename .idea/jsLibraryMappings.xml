@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{animate.css, countup.js, jquery, jquery-3.6.0, jquery-migrate-3.4.0, parallaxImg, simple-parallax-js}" />
+    <file url="PROJECT" libraries="{74fed0e2b5, fullPage.js}" />
   </component>
 </project>
